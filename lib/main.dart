@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'admin/AddHospital.dart';
+import 'auth/login.dart';
+import 'auth/signUp.dart';
+import 'admin/addDoctor.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,8 +26,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/wel',
-      routes: {'/welcome': (context) => Welcome()},
+      initialRoute: '/welcome',
+      routes: {
+        '/welcome': (context) => Welcome(),
+        '/add-hospital': (context) => AddHospitalPage(),
+        '/signup': (context) => SignUpPage(),
+        '/login': (context) => LoginPage(),
+        '/doc': (context) => DoctorSignUpPage(),
+      },
       debugShowCheckedModeBanner: false,
     );
   }
@@ -40,7 +50,7 @@ class _WelcomeScreenState extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
         child: Column(
@@ -53,7 +63,7 @@ class _WelcomeScreenState extends State<Welcome> {
                 Text(
                   'e-Hospital System',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontFamily: 'Pacifico',
                     fontSize: 45.0,
                     fontWeight: FontWeight.w900,
@@ -69,7 +79,9 @@ class _WelcomeScreenState extends State<Welcome> {
                 color: Colors.blue.shade300,
                 borderRadius: BorderRadius.circular(30.0),
                 child: MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/login');
+                  },
                   minWidth: 200.0,
                   height: 42.0,
                   child: Text(
@@ -86,7 +98,9 @@ class _WelcomeScreenState extends State<Welcome> {
                 borderRadius: BorderRadius.circular(30.0),
                 elevation: 5.0,
                 child: MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/signup');
+                  },
                   minWidth: 200.0,
                   height: 42.0,
                   child: Text(
