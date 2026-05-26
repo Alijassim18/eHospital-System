@@ -17,20 +17,22 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: Welcome.id,
-      routes: {Welcome.id: (context) => Welcome()},
+      initialRoute: '/wel',
+      routes: {'/welcome': (context) => Welcome()},
+      debugShowCheckedModeBanner: false,
     );
   }
 }
 
 class Welcome extends StatefulWidget {
-  static const String id = 'Welcome1';
+  const Welcome({super.key});
   @override
+  // ignore: library_private_types_in_public_api
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
@@ -49,7 +51,7 @@ class _WelcomeScreenState extends State<Welcome> {
               children: <Widget>[
                 SizedBox(height: 200.0, child: Image.asset('assets1/img.png')),
                 Text(
-                  'e-Hospital ',
+                  'e-Hospital System',
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: 'Pacifico',
